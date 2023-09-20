@@ -12,7 +12,7 @@ LON = -21.827774
 ALT_OF_INTEREST = 20000 # meters. 20 km is when most IMU chips will cut out
 MAX_ALT = 30000 # meters
 ALT_DELTA = 10 # meters
-STARTING_ALT = 10000 # meters
+STARTING_ALT = 0 # meters
 COUNTER_DELT = 0.1
 
 def up(alt, meters):
