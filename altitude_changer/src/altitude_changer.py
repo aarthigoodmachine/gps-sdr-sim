@@ -15,6 +15,8 @@ ALT_DELTA = 10 # meters
 STARTING_ALT = 0 # meters
 COUNTER_DELT = 0.1
 
+
+
 def up(alt, meters):
     return alt + meters
 
@@ -23,18 +25,24 @@ def down(alt, meters):
 
 def main():
     alts = list()
+    longs = list()
     alt = STARTING_ALT
+    lon = LON
     while (alt < MAX_ALT):
         alt = up(alt, ALT_DELTA)
         alts.append(alt)
+        lon += .0001
+        longs.append(lon)
     while (alt > STARTING_ALT):
         alt = down(alt, ALT_DELTA)
         alts.append(alt)
+        lon -= .0001
+        longs.append(lon)
     counters = np.arange(0, 0 + len(alts) * 0.1, 0.1).tolist()
     counters = np.round(counters,1)
     with open("out.csv", "w", newline="") as f:
         writer = csv.writer(f)
-        writer.writerows(list(zip(counters,[LAT]*len(alts), [LON]*len(alts), alts)))
+        writer.writerows(list(zip(counters,[LAT]*len(alts), longs, alts)))
 
 if __name__ == "__main__":
     main()
