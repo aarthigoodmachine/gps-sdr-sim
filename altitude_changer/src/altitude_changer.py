@@ -1,4 +1,5 @@
 import csv
+import math
 import numpy as np # this is unbelievably annoying for just needing a range of values w/ a delta of 0.1, but because of floating point arithemtic in python, i guess this is necessary....
 import requests
 
@@ -25,7 +26,7 @@ COUNTER_DELT = 0.1
 
 
 def meters_to_decimal_degrees(meter, latitude):
-    return meter/((KM_PER_DEGREE*1000*Math.Cos(latitude*(Math.PI/180))))
+    return meter/((KM_PER_DEGREE*1000*math.cos(latitude*(math.pi/180))))
 
 def up(alt, meters):
     return alt + meters
